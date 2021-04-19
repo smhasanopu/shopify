@@ -1,0 +1,110 @@
+ <!-- Section 3 -->
+      <section class="c-page-section">
+        <h2 class="text-center">{{ section.settings.galary_text }} </h2>
+        <ul class="tab-nav" id="btns_wrapper">
+            <li>
+                <p onclick="filterSelection('item_1')" class="tabmenu">LEG</p>
+            </li>
+            <li>
+                <p onclick="filterSelection('item_2')" class="tabmenu">LEG</p>
+            </li>
+            <li>
+                <p onclick="filterSelection('item_3')" class="tabmenu">LEG</p>
+            </li>
+            <li>
+                <p onclick="filterSelection('item_4')" class="tabmenu">LEG</p>
+            </li>
+            <li>
+                <p onclick="filterSelection('all')" class="tabmenu active">Show all</p>
+            </li>
+        </ul>
+
+        <!-- tabsCon -->
+        <div class="tabsCon">
+          
+            <div id="content_1" class="tabcontent before-after-photos">
+              {% for block in section.blocks %}
+
+                <a class="ba-item item_{{ block.settings.item_isotop }} " href="#">
+                    <img src="{{ block.settings.masonry_img_1 | img_url:'master'}}" alt="">
+                    <div class="ba-footer">
+                        <div>
+                            <h6>{{ block.settings.masonry_title1}}</h6>
+                            <p>{{ block.settings.masonry_content1}}Leg</p>
+                        </div>
+                        <button>{{ block.settings.masonry_read1}}</button>
+                    </div>
+                </a>
+              
+              {% endfor %}
+              
+
+            </div>
+          
+        </div>
+        <!-- /tabsCon -->
+
+    </section>
+   
+
+{% schema %}
+  {
+    "name": "Masonry Product",
+    "settings": [
+			{
+               "type": "text",
+               "id": "galary_text",
+               "label": " Masonry Title",
+               "placeholder": "text"
+    		}
+],
+  	  "blocks":[
+          {
+            "type": "select",
+            "name": "Block",
+            "settings":[
+{
+                "type": "image_picker",
+                "id": "masonry_img_1",
+                "label": "Masonry Image 1"
+            },
+
+{
+                "type": "text",
+                "id": "masonry_title1",
+                "label": "Masonry PRoduct"
+            },
+{
+                "type": "text",
+                "id": "masonry_content1",
+                "label": "Masonry Content 1"
+            },
+{
+                "type": "text",
+                "id": "masonry_read1",
+                "label": "Product Title"
+            },
+            {
+               "type": "radio",
+               "id": "item_isotop",
+               "options": [
+                  { "value": "1", "label": "Show In Item 1"},
+                  { "value": "2", "label": "Show In Item 2"},
+				  { "value": "3", "label": "Show In Item 3"},
+                  { "value": "4", "label": "Show In Item 4"}
+               ],
+               "label": "Logo alignment"
+            }
+
+         ]
+
+        }
+     ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
